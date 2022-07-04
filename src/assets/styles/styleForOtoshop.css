@@ -1,0 +1,494 @@
+.right-row_end{
+    justify-content: flex-end ;
+}
+
+.row-menu_oto{
+    height: 61px;
+}
+
+.text-sm.uppr-sm__oto {
+    margin: 0rem;
+    text-transform: uppercase;
+        font-size: 14px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0px;
+    text-align: center;
+    text-transform: capitalize ;
+  }
+
+
+.search__footer_first{
+    margin-top: 20px;
+}
+
+
+  .stories.snapgram .story > .item-link>.item-preview {
+    background: linear-gradient(180deg, #CD0000 8%, #922c07 23%, #472525 41%, #192879 57%, #472525 76%, #090B4D 91%) !important;
+    cursor: pointer;
+}
+
+.bannerWrapper {
+    background:linear-gradient(180deg, #232A6B 0%, #181D4E 100%);
+    margin-bottom: 20px;
+}
+
+.banner{
+    display: flex;
+    justify-content: space-between;
+    color: #FFFF;
+    background:linear-gradient(180deg, #232A6B 0%, #181D4E 100%);
+    /* background-image: url("../images/oto/Group.png") ;
+    background-repeat: no-repeat;
+    background-position: 100%;
+    background-size: 53%;
+    height: 290px; */
+    overflow: hidden;
+    height: 288px;
+}
+.banner__content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 50px;
+    background:url("../images/oto/Sparkles.png") no-repeat 105% 100%, url("../images/oto/Sparkles1.png") no-repeat 2% 0%;
+    width: 50%;
+    z-index: 2;
+}
+
+
+.banner__header{
+    margin-bottom: 20px;
+ font-size: 38px;
+font-weight: 700;
+line-height: 48px;
+letter-spacing: 0em;
+text-align: left;
+
+}
+
+.banner__button{
+    display: inline-block;
+    border: none;
+    padding: 1rem 2rem;
+    margin: 0;
+    text-decoration: none;
+    background: #087C12;
+    color: #ffffff;
+    font-family: sans-serif;
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+    text-align: center;
+    transition: background 250ms ease-in-out, transform 150ms ;
+     border-radius: 4px;
+     border-radius: 4px;
+    width: max-content;
+}
+.banner__button:hover{
+    background: #087c12bd;
+ }
+.search{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: #F8F8F8;
+    border-radius:10px;
+    padding: 0 0px 44px 0px;
+    
+}
+
+.search__inputs{
+     margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 20px;
+    padding-left: 20px;
+
+}
+.search__inputs+.search__inputs{
+    margin-top: 20px ;
+
+}
+
+.search__select{
+    width: 33%;
+
+}
+
+.search__select+.search__select{
+    margin-left:20px;
+
+}
+
+.search__buttons{
+    width: 33%;
+    margin-left: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.search__footer-first{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.search__switcher{
+    padding: 15px 50px;
+    font-size: 14px;
+    color:  rgba(0, 0, 0, 0.5);
+     font-weight: 900;
+     background: #F8F8F8;
+     cursor: pointer;
+}
+
+.search__switcher_active{
+background-color: #efefef;
+color: #087C12;
+}
+
+.search__select{
+    outline: 0;
+    border: 0;
+    border: 0.7px solid #090B4D99;
+    border-radius: 4px;
+ height: 48px;
+ padding-right: 16px;
+ padding-left: 16px;
+}
+
+.search__button-search{
+    width: 100%;
+    width: -moz-available;          /* WebKit-based browsers will ignore this. */
+    width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+    width: fill-available;
+    margin-right: 20px;
+}
+
+.search__button{
+    border: 0.7px solid #090B4D99;
+    background: #F8F8F8;
+border-radius: 4px;
+height: 48px;
+width: 56px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.search__button:hover{
+ background-color: rgb(238, 237, 237);
+}
+
+
+
+.banner__img{
+    height: 288px;
+    position: absolute;
+    right: 0;
+}
+.bannerWrapper{
+    overflow: hidden;
+    position: relative;
+}
+
+
+
+.partners{
+ margin-top: 40px;
+}
+
+
+.partners__logo{
+    margin-right: 100px;
+    height: 40px;
+    width: 150px;
+}
+.partners__slick{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+
+.section-title_otoshop{
+    font-size: 36px;
+    color: #010101;
+
+}
+
+.kampaniyalar{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+flex-wrap: wrap;
+}
+.kampaniyalar__kampaniya{
+    margin-bottom: 20px;
+    width: 49%;
+}
+
+.product-heading_oto{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-bottom: 0;
+}
+ .prd-title_oto{
+     color: #383838 ;
+     font-weight: 600;
+     font-size: 17px;
+     text-transform: capitalize;
+
+ }
+.product__sizeText{
+    color: #727272;
+margin-top: 3px;
+margin-bottom: 7px;
+}
+.total-price_oto{
+    font-weight: 700;
+    font-size: 18px;
+}
+
+
+ .produktlar__button{
+    display: inline-block;
+    border: none;
+    padding: 1rem 2rem;
+    margin: 0;
+    text-decoration: none;
+     color: #ffffff;
+    font-family: sans-serif;
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+    text-align: center;
+    transition: background 250ms;
+    padding: 15px 30px;
+    color: #010101;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    background-color: white;
+    border: 0.5px solid rgb(236, 236, 236);
+ }
+
+ .produktlar__buttons{
+     display: flex;
+     justify-content: center;
+     margin-bottom: 20px;
+     margin-top: 20px;
+ }
+
+
+ .produktlar__button_active{
+     background-color:#090B4D ;
+     color: white;
+ }
+
+ .search__select_half{
+     width: 50%;
+ }
+
+ .popupWrapper{
+     position: fixed;
+     width: 100vw;
+     height: 100vh;
+     background: rgba(196, 196, 196, 0.2);
+     top: 0;
+     left: 0;
+     z-index: 2000 !important;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+       
+ }
+
+ .popup__btnDiv{
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+margin-bottom: 24px;
+ }
+ .popup {
+     width: 581px;
+     background: #FFFFFF;
+      border: 1px solid #DEE2E6;
+      box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.12), 0px 20px 20px rgba(0, 0, 0, 0.08);
+     border-radius: 8px;     
+     padding: 24px; 
+  }
+
+ .popup__button{
+    margin-right: 10px;
+    margin-top: 10px;
+}
+.popup__text{
+    color: #54595E;
+    font-size: 24px;
+}
+
+.popup__buttons{
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.popup__button{
+  
+    color: #CD0000;
+    font-size: 16px;
+    background: white;
+    border: 1px solid #CD0000;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-weight: 700;
+}
+
+
+.basket-buttons_oto{
+     border-radius: 4px;
+}
+
+.cart-button_oto{
+    background-color: #090B4D;
+    border-radius: 8px;
+}
+
+@media only screen and (max-width: 1000px) {
+    .banner__content{
+        width: 60%;
+    }
+ 
+     .bannerImgWrapper{
+       width: 200px;
+    }
+    .search__select{
+        width: 100%;
+    }
+    .search__buttons{
+        width: 100%;
+    }
+       }
+
+@media only screen and (max-width: 800px) {
+.search__switcher{
+    padding: 10px 12px;
+}
+.search__inputs{
+    flex-direction: column;
+    align-items: flex-start;
+ }
+.search__inputs+.search__inputs{
+    margin-top: 0px;
+
+}
+.search__select+.search__select{
+    margin-left:0;
+ }
+
+
+ .search__select{
+    margin-top:10px;
+
+}
+    .search__buttons{
+   margin-left: 0;
+     }
+.search__buttons{
+    margin-top: 10px;
+}
+
+
+.banner__img{
+ 
+    right:-100px;
+}
+
+.banner__content{
+    width: 80%;
+    background:url("../images/oto/Sparkles.png") no-repeat 80% 100%, url("../images/oto/Sparkles1.png") no-repeat 2% 0%;
+}
+
+
+
+.partners__logo{
+    height: 25px;
+   width: 85px;
+}
+  
+ .search__header{
+    display: flex;
+
+ }
+
+
+ .kampaniyalar__kampaniya{
+width: 100%;
+ }
+ .partners__logo{
+   height: 25px;
+  width: 85px;
+}
+
+
+
+.partners .slick-slide{
+width: 100px !important;
+}
+
+.slick-track{
+    width: 1900px !important;
+}
+
+
+
+
+
+   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 500px) {
+ .bannerImgWrapper{
+    width: 1px;
+}
+
+.banner__content{
+    width: 100%;
+}
+
+.banner__header{
+    font-size:28px ;
+}
+
+.produktlar__button{
+    font-size: 12px;
+}
+
+.produktlar__button{
+    padding: 10px 20px;
+}
+.section-title_otoshop{
+    font-size: 30px;
+}
+   }
