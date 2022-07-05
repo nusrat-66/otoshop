@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import wheel from "../../../assets/images/oto/wheel.png"
 
 function Index() {
-      const pert=(data)=>console.log(data);
+      const pert=(data)=> data;
 
 const [type, setType] = useState("newComers");
 

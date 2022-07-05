@@ -12,10 +12,8 @@ export default function BlogLanding() {
             }
           })
           .then(function (response) {
-              console.log(response.data);
-              setblogLanding(response.data)
-              console.log(response.data[0]["title"]);
-          })
+               setblogLanding(response.data)
+           })
           .catch(function (error) {
             console.log(error);
           });

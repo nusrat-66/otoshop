@@ -17,7 +17,7 @@ function CampaignMain() {
         return `${installemnt__.toFixed(2)} ₼ / ay`;
     }
     function pert(data) {
-        console.log(data);
+        
     }
 
 

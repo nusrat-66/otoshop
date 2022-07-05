@@ -6,6 +6,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+
+
  export default function Navbar() {
   const [MenuMobile, setMenuMobile] = useState(false);
   const [ActiveSubCat, setActiveSubCat] = useState();
@@ -16,6 +18,9 @@ const params=useParams()
 
 const {buckets}=useSelector(state=>state)
 const {wishList}=useSelector(state=>state)
+
+const {categorieReducer}  = useSelector(state => state)
+
 
 
    useEffect(() => {
@@ -46,21 +51,22 @@ navigate(`/axtarish/${value}`)
   setMenuMobile(false)
 }, [params])
 
-  useEffect(() => {
-      axios({
-          method: "GET",
-          baseURL: "https://apis.digimall.az/api/Cehizim/GetCategoriesWithCreditSettings",
-          headers: {
-              'Content-Type': 'application/json',
-              'api-key' : '620C471E-05CC-4D90-9817-B7A3EED57E1B'
-          },
-      }).then( function(response) {
-        setCatData(response.data);
-      });
-  }, []);
-  useEffect(() => {
-   }, [catData]);
-  //catDat
+  // useEffect(() => {
+  //     axios({
+  //         method: "GET",
+  //         baseURL: "https://apis.digimall.az/api/Cehizim/GetCategoriesWithCreditSettings",
+  //         headers: {
+  //             'Content-Type': 'application/json',
+  //             'api-key' : '620C471E-05CC-4D90-9817-B7A3EED57E1B'
+  //         },
+  //     }).then( function(response) {
+  //       setCatData(response.data);
+  //     });
+  // }, []);
+  // useEffect(() => {
+  //  }, [catData]);
+  // //catDat
+
   return (
     <div className="navigation">
       <div className="dv-wrapper">
@@ -123,7 +129,7 @@ navigate(`/axtarish/${value}`)
                 <img src="https://assets.website-files.com/620a985e7541fc8c1ca5ea83/620b41b8bf004526086ca93e_menu-icon.svg" loading="lazy" alt="" className="menu-icon wh-24" />
                 </div>
             </div>
-          </div>
+          </div> 
           <div className="mod-search">
             <div className="blok-search">
               <div className="search-input"><img src="https://assets.website-files.com/620a985e7541fc8c1ca5ea83/620ab8c06e16612a3ecfd112_search.svg" loading="lazy" alt="" className="search-icon wh-20" />
@@ -140,7 +146,7 @@ navigate(`/axtarish/${value}`)
         <div className="dv-wrapper">
           <div className="m-menu-cnt">
             <ul role="list" className="list-menu">
-              { catData && catData.map((index, key) =>
+              { categorieReducer && categorieReducer.map((index, key) =>
                   <li className="item-list" key={key}>
                     <div className="mobile-dp w-dropdown">
                       <div className="dp-toggle text-sm uppr-sm w-dropdown-toggle" role="button" >

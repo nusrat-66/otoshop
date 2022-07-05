@@ -129,10 +129,10 @@ export const takeWishlistFromApi = () => ({
     return function (dispatch){
       axios({
         method: "GET",
-        baseURL: "https://apis.digimall.az/api/Cehizim/GetCategoriesWithCreditSettings",
+        baseURL: "https://apis.digimall.az/api/OtoShop/GetCategoriesWithCreditSettings",
         headers: {
             'Content-Type': 'application/json',
-            'api-key' : '620C471E-05CC-4D90-9817-B7A3EED57E1B'
+            'api-key' : 'D74AE0D0-6F20-40AA-B4C9-FC138D66EF10'
         },
     }).then( function(response) {
           dispatch(getCategoriesAction(response.data));

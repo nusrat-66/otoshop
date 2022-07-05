@@ -43,8 +43,7 @@ export default function HeroSlider() {
         // }, 1000);
     }, [])
     useEffect(() => {
-        console.log(LastHero);
-        console.log(HeroData);
+  
     }, [LastHero])
     return(
         <>
