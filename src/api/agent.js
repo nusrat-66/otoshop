@@ -16,7 +16,7 @@ import axios from "axios";
       } 
   }))
 },
- postUserAdress:(data)=>{
+ postUserAdress: (data)=>{
        return axios.post(`Customers/NewCustomerAddress`, data, {headers: { 'api-key': "D74AE0D0-6F20-40AA-B4C9-FC138D66EF10",  'Authorization' : `Bearer ${localStorage.getItem('token')}`}})
      .then((data)=>{
         return data.data
@@ -135,7 +135,38 @@ relatedProducts: (body) => {
            return responseBody.data
       } 
   }))
+ },
+
+ getSlider: () => {
+  return  axios.get(`https://apis.digimall.az/api/OtoShop/GetSliders`,
+    {headers: { 'api-key': "D74AE0D0-6F20-40AA-B4C9-FC138D66EF10"}})
+  .then((responseBody=>{
+       if(responseBody.status==200){
+           return responseBody.data
+      } 
+  }))
+ },
+
+ getCategories: () => {
+  return  axios.get(`https://apis.digimall.az/api/OtoShop/GetCategoriesWithCreditSettings`,
+    {headers: { 'api-key': "D74AE0D0-6F20-40AA-B4C9-FC138D66EF10"}})
+  .then((responseBody=>{
+       if(responseBody.status==200){
+           return responseBody.data
+      } 
+  }))
+ },
+
+ getStories: () => {
+  return  axios.get(`https://apis.digimall.az/api/OtoShop/GetStories`,
+    {headers: { 'api-key': "D74AE0D0-6F20-40AA-B4C9-FC138D66EF10"}})
+  .then((responseBody=>{
+       if(responseBody.status==200){
+           return responseBody.data
+      } 
+  }))
  }
+
  }
 
 
@@ -150,7 +181,6 @@ relatedProducts: (body) => {
      } 
  }))
 },
- 
 getNewest: (id) => {
   return  axios.get(`https://apis.digimall.az/api/Cehizim/GetNewestProductById/${id}`,
     {headers: { 'api-key': "D74AE0D0-6F20-40AA-B4C9-FC138D66EF10"}})
@@ -162,6 +192,8 @@ getNewest: (id) => {
  },
  
 }
+
+
   
   
 const agent = {

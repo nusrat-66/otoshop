@@ -17,8 +17,7 @@ export default function ReadBlogComp() {
             }
           })
           .then(function (response) {
-              console.log(response.data);
-              setBlogDetails(response.data)
+               setBlogDetails(response.data)
           })
           .catch(function (error) {
             console.log(error);

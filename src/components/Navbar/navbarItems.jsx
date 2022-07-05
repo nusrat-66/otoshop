@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import {Link} from 'react-router-dom';
  
-function NavbarItems({title}) {
+function NavbarItems({title}) { 
     const [catData, setCatData] = useState();
     const [isShown, setIsShown] = useState(false);
   return (
-<div data-hover="true" data-delay={0} className="nav-link nav-link-cs w-dropdown" onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)}>
+<div data-hover="true" data-delay={0} className="nav-link nav-link-cs w-dropdown">
                                             <div className="dp-toogle w-dropdown-toggle" aria-haspopup="menu" aria-expanded="false" role="button" tabIndex={0}>
                                              <Link style={{textDecoration:"none"}} to={`/category/cat-static`}>   <div className="text-sm uppr-sm uppr-sm__oto"> {title} </div></Link>
                                             </div>

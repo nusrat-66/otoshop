@@ -11,8 +11,7 @@ import { useParams } from 'react-router-dom';
 export default function ProductComp() {
 const params=useParams()
  
-console.log(params, 'paramss');
-useEffect(() => {
+ useEffect(() => {
     window.scrollTo(0, 0)
  }, [params])
 const itemsPerPage=6

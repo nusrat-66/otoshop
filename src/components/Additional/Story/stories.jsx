@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import agent from '../../../api/agent'
 import Zuck from 'zuck.js';
 import './App.css';
 
@@ -8,133 +9,7 @@ export default class App extends Component {
     this.storiesElement = null;
     this.storiesApi = null;
     this.state = {
-      stories: [
-        Zuck.buildTimelineItem(
-        'ramon111',
-        'https://assets.website-files.com/620a985e7541fc8c1ca5ea83/620c924c14d328f6ebbe1acb_story-1.png',
-        false,
-        false,
-        1575221470504,
-        [
-          [
-            'ramon-1',
-            'photo',
-            3,
-            'https://assets.website-files.com/620a985e7541fc8c1ca5ea83/620c924c14d328f6ebbe1acb_story-1.png',
-            'https://assets.website-files.com/620a985e7541fc8c1ca5ea83/620c924c14d328f6ebbe1acb_story-1.png',
-            '',
-            false,
-            false,
-            1575221470504,
-          ],
-          ],
-        ),
-
-        Zuck.buildTimelineItem(
-          'ramon',
-          'https://assets.website-files.com/620a985e7541fc8c1ca5ea83/620c924c14d328f6ebbe1acb_story-1.png',
-            false,
-          'https://ramon.codes',
-          1575221470504,
-          [
-            [
-              'ramon-1',
-              'photo',
-              3,
-              'https://assets.website-files.com/620a985e7541fc8c1ca5ea83/620c924c14d328f6ebbe1acb_story-1.png',
-              'https://assets.website-files.com/620a985e7541fc8c1ca5ea83/620c924c14d328f6ebbe1acb_story-1.png',
-              '',
-              false,
-              false,
-              1575221470504,
-            ],
-            ],
-        ),
-
-        Zuck.buildTimelineItem(
-          'ramon',
-          'https://assets.website-files.com/620a985e7541fc8c1ca5ea83/620c924c14d328f6ebbe1acb_story-1.png',
-            false,
-          'https://ramon.codes',
-          1575221470504,
-          [
-            [
-              'ramon-1',
-              'photo',
-              3,
-              'https://assets.website-files.com/620a985e7541fc8c1ca5ea83/620c924c14d328f6ebbe1acb_story-1.png',
-              'https://assets.website-files.com/620a985e7541fc8c1ca5ea83/620c924c14d328f6ebbe1acb_story-1.png',
-              '',
-              false,
-              false,
-              1575221470504,
-            ],
-            ],
-        ),
-
-        Zuck.buildTimelineItem(
-          'ramon',
-          'https://assets.website-files.com/620a985e7541fc8c1ca5ea83/620c924c14d328f6ebbe1acb_story-1.png',
-            false,
-          'https://ramon.codes',
-          1575221470504,
-          [
-            [
-              'ramon-1',
-              'photo',
-              3,
-              'https://assets.website-files.com/620a985e7541fc8c1ca5ea83/620c924c14d328f6ebbe1acb_story-1.png',
-              'https://assets.website-files.com/620a985e7541fc8c1ca5ea83/620c924c14d328f6ebbe1acb_story-1.png',
-              '',
-              false,
-              false,
-              1575221470504,
-            ],
-            ],
-        ),
-
-        Zuck.buildTimelineItem(
-          'ramon',
-          'https://assets.website-files.com/620a985e7541fc8c1ca5ea83/620c924c14d328f6ebbe1acb_story-1.png',
-            false,
-          'https://ramon.codes',
-          1575221470504,
-          [
-            [
-              'ramon-1',
-              'photo',
-              3,
-              'https://assets.website-files.com/620a985e7541fc8c1ca5ea83/620c924c14d328f6ebbe1acb_story-1.png',
-              'https://assets.website-files.com/620a985e7541fc8c1ca5ea83/620c924c14d328f6ebbe1acb_story-1.png',
-              '',
-              false,
-              false,
-              1575221470504,
-            ],
-            ],
-        ),
-
-        Zuck.buildTimelineItem(
-          'ramon',
-          'https://assets.website-files.com/620a985e7541fc8c1ca5ea83/620c924c14d328f6ebbe1acb_story-1.png',
-            false,
-          'https://ramon.codes',
-          1575221470504,
-          [
-            [
-              'ramon-1',
-              'photo',
-              3,
-              'https://assets.website-files.com/620a985e7541fc8c1ca5ea83/620c924c14d328f6ebbe1acb_story-1.png',
-              'https://assets.website-files.com/620a985e7541fc8c1ca5ea83/620c924c14d328f6ebbe1acb_story-1.png',
-              '',
-              false,
-              false,
-              1575221470504,
-            ],
-            ],
-        ),
-      ],
+      stories: this.props.stories,
     };
   }
 
@@ -166,12 +41,22 @@ export default class App extends Component {
       },
       stories: this.state.stories,
     });
+
+
+    const storyFunction = async () => {
+      const responseApi = await agent.ProductRelated.getStories() 
+
+ 
+
+    }
+
+    storyFunction()
+
   }
 
   render() {
     const timelineItems = [];
-
-    this.state.stories.map((story, storyId) => {
+     this.state.stories.map((story, storyId) => {
       const storyItems = [];
 
       story.items.map(storyItem => {
@@ -207,7 +92,7 @@ export default class App extends Component {
         >
           <a className="item-link">
             <span className="item-preview">
-              <img src={story.photo} />
+              <img src={story.photo}/>
             </span>
             <span className="info" itemProp="author" itemScope="" itemType="http://schema.org/Person">
               <strong className="name" itemProp="name">
@@ -216,15 +101,15 @@ export default class App extends Component {
               <span className="time">{story.lastUpdated}</span>
             </span>
           </a>
-
-          <ul className="items">{storyItems}</ul>
+           <ul className="items">{storyItems}</ul>
         </div>,
       );
     });
 
     return (
+
       <div>
-        <div ref={node => (this.storiesElement = node)} id="stories-react" className="storiesWrapper">
+         <div ref={node => (this.storiesElement = node)} id="stories-react" className="storiesWrapper">
           {timelineItems}
         </div>
       </div>

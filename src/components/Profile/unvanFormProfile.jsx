@@ -32,8 +32,7 @@ setSuccessMessage('Müvəffəqiyyətlə əlavə olundu')
    }, 3000);
    }
 const selectChange= async(e)=>{
-    console.log(e.target.value, "e.target.value55");
-    if(e.target.value){
+     if(e.target.value){
   const regionResponse=await  agent.BucketRelated.getCities(e.target.value)
    setListRegionItems(regionResponse)
    return
