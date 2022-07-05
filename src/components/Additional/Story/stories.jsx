@@ -9,7 +9,7 @@ export default class App extends Component {
     this.storiesElement = null;
     this.storiesApi = null;
     this.state = {
-      stories: [],
+      stories: this.props.stories,
     };
   }
 
@@ -46,34 +46,6 @@ export default class App extends Component {
     const storyFunction = async () => {
       const responseApi = await agent.ProductRelated.getStories() 
 
-      const mockArray = responseApi.map((item) => {
-        return  Zuck.buildTimelineItem(
-          item.title,
-          'https://ferrumcapital.s3.eu-north-1.amazonaws.com' + item.image,
-          false,
-          false,
-          1575221470504,
-          [
-            [
-              'ramon-1',
-              'photo',
-              3,
-              'https://ferrumcapital.s3.eu-north-1.amazonaws.com' + item.image,
-              'https://ferrumcapital.s3.eu-north-1.amazonaws.com' + item.image,
-              '',
-              false,
-              false,
-              1575221470504,
-            ],
-            ],
-          )
-      })
-
-      
-     this.setState({
-      stories: mockArray
-     })
-
     }
 
     storyFunction()
@@ -82,11 +54,10 @@ export default class App extends Component {
 
   render() {
     const timelineItems = [];
-
-    this.state.stories.map((story, storyId) => {
+     this.state.stories.map((story, storyId) => {
       const storyItems = [];
 
-      story.items.map(storyItem => { 
+      story.items.map(storyItem => {
         storyItems.push(
            <li
             key={storyItem.id}
@@ -103,7 +74,7 @@ export default class App extends Component {
               <img src={storyItem.preview} />
             </a>
           </li>
-          
+           
           ,
         );
       });
@@ -119,7 +90,7 @@ export default class App extends Component {
         >
           <a className="item-link">
             <span className="item-preview">
-              <img src={story.photo} />
+              <img src={story.photo}/>
             </span>
             <span className="info" itemProp="author" itemScope="" itemType="http://schema.org/Person">
               <strong className="name" itemProp="name">
@@ -128,15 +99,15 @@ export default class App extends Component {
               <span className="time">{story.lastUpdated}</span>
             </span>
           </a>
-
-          <ul className="items">{storyItems}</ul>
+           <ul className="items">{storyItems}</ul>
         </div>,
       );
     });
 
     return (
+
       <div>
-        <div ref={node => (this.storiesElement = node)} id="stories-react" className="storiesWrapper">
+         <div ref={node => (this.storiesElement = node)} id="stories-react" className="storiesWrapper">
           {timelineItems}
         </div>
       </div>

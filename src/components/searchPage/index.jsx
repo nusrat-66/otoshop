@@ -10,7 +10,7 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { addWishListStorage, deleteWishListStorage } from "../../redux/actions"
   
-export default function ProductComp() {
+export default function ProductComp() { 
 
 const params=useParams()
  useEffect(() => {
