@@ -137,6 +137,17 @@ getAdvanceSearch: () => {
   }))
  },
 
+ getNewestProduct: () => {
+  return  axios.get(`https://apis.digimall.az/api/OtoShop/GetNewestProdultList`,
+    {headers: { 'api-key': "D74AE0D0-6F20-40AA-B4C9-FC138D66EF10"}}) 
+  .then((responseBody=>{
+       if(responseBody.status==200){
+           return responseBody.data
+      } 
+  }))
+ },
+ 
+
 relatedProducts: (body) => {
   return  axios.post(`/Queries/CehizimRelatedProducts`, body,
     {headers: { 'api-key': "D74AE0D0-6F20-40AA-B4C9-FC138D66EF10", 'Authorization' : `Bearer ${localStorage.getItem('token')}`}})

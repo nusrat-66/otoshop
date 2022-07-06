@@ -47,11 +47,14 @@ const params=useParams()
             },
             data: 
                 {
-                    "width" : width,
-                    "height": height,
-                    "diameter": diameter,
+                    "width" : parseInt(width),
+                    "height": parseInt(height),
+                    "diameter": parseInt(diameter),
                     "type": type,
-                    "season": season
+                    "season": season,
+                    "skip": 0,
+                    "take": 1000,
+                    "languageId": 15
                 }
          }).then( function(response) {
              setProducts(response.data);
@@ -104,11 +107,8 @@ const params=useParams()
                 <div className="w-layout-grid sidebar-layout-grid">
 
 
-
-
-
                     
-                    <div id="w-node-ba7b83b4-baa9-009f-e5d0-16296e3e3744-fc9d8ccc" className="left-side">
+                 <div id="w-node-ba7b83b4-baa9-009f-e5d0-16296e3e3744-fc9d8ccc" className="left-side">
                         <div className="left-slide-h">
                             <h6 id="w-node-b9c07c25-5c4f-130a-7aac-d8bbd182763a-fc9d8ccc" className="lefts-side-h">Kateqorİyalar</h6>
                             <a className="filter-product w-inline-block"><img src="images/filter-search.svg" loading="lazy" alt="" /></a>
@@ -287,7 +287,7 @@ const params=useParams()
                                 </ul>
                             </div>
                         </div>
-                    </div>
+                 </div>
  
                      <div className="w-layout-grid right-side">
  
@@ -303,7 +303,7 @@ const params=useParams()
                                 <Link to={"/mehsul/" + index.productId} className="product-dv-img w-inline-block">
                                     <div className="prd-dv">
                                         <img
-                                            src={"//cdn.otomall.az/" + index.imageUrl}
+                                            src={"https://ferrumcapital.s3.eu-north-1.amazonaws.com" + index.imageUrl}
                                             loading="lazy"alt=""
                                             className="product-image-h"
                                         />
