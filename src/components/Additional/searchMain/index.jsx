@@ -1,8 +1,46 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Reload } from "../../../assets/images/svg/svg";
+import { Link } from "react-router-dom";
+import agent from '../../../api/agent';
 import Popup from "../popUp/popup";
 function Index() {
+
   const [typeOfSearch, setTypeOfSearch] = useState(true);
+
+  const [widthOptions, setWidthOptions] = useState([])
+  const [heightOptions, setheightOptions] = useState([])
+  const [diameterOptions, setdiameterOptions] = useState([])
+  const [typeOptions, settypeOptions] = useState([])
+  const [seasonOptions, setseasonOptions] = useState([])
+  
+  useEffect(() => {
+    const getSearchData = async () => {
+      const searchData = await agent.ProductRelated.getAdvanceSearch();
+      searchData.forEach((item) => {
+        if(item.attId === 10060) {
+          setWidthOptions(item.attOptions)
+        } else if(item.attId === 10061) {
+          setheightOptions(item.attOptions)
+        } else if(item.attId === 10062) {
+          setdiameterOptions(item.attOptions)
+        } else if(item.attId === 10055) {
+          settypeOptions(item.attOptions)
+        } else if(item.attId === 10056) {
+          setseasonOptions(item.attOptions)
+        }
+      })
+    };
+    getSearchData();
+
+  }, []);
+
+  const [width, setWidth] = useState('')
+  const [height, setHeight] = useState('')
+  const [diameter, setDiameter] = useState('')
+  const [type, setType] = useState('')
+  const [season, setSeason] = useState('')
+
+
 
   return (
     <div className="dv-wrapper">
@@ -18,7 +56,7 @@ function Index() {
           >
             Təkərə görə axtar
           </button>
-          <button
+          {/* <button
             onClick={() => setTypeOfSearch(false)}
             className={
               !typeOfSearch
@@ -27,55 +65,70 @@ function Index() {
             }
           >
             Avtomobilə görə axtar
-          </button>
+          </button> */}
         </div>
 
         {typeOfSearch && (
           <form className="search__footer_first">
-            <div className="search__inputs">
-              <select className="search__select" name="" id="">
-                <option value="">En</option>
-                <option value="10">100mm</option>
-                <option value="20">200mm</option>
-              </select>
-              <select className="search__select" name="" id="">
-                <option value="">Hündürlük</option>
-                <option value="10">500mm</option>
-                <option value="20">700mm</option>
-              </select>
-              <select className="search__select" name="" id="">
-                <option value="">Diametr</option>
-                <option value="10">200mm</option>
-                <option value="20">150mm</option>
-              </select>
-            </div>
+                  <div className="search__inputs">
+                    <select value={width} className="search__select" name="" id="" onChange={(e) => setWidth(e.target.value)}>
+                      <option value="">En</option>
+                      {
+                        widthOptions.map((item,index) => (
+                          <option key={index}  value={item}>{item}</option>
+                        ))
+                      }
+                    </select>
+                    <select value={height} className="search__select" name="" id="" onChange={(e) => setHeight(e.target.value)}>
+                      <option value="">Hündürlük</option>
+                      {
+                        heightOptions.map((item,index) => (
+                          <option key={index}  value={item}>{item}</option>
+                        ))
+                      }
+                    </select>
+                    <select value={diameter} className="search__select" name="" id="" onChange={(e) => setDiameter(e.target.value)}>
+                      <option value="">Diametr</option>
+                      {
+                        diameterOptions.map((item,index) => (
+                          <option key={index}  value={item}>{item}</option>
+                        ))
+                      }
+                    </select>
+                  </div>
 
-            <div className="search__inputs">
-              <select className="search__select" name="" id="">
-                <option value="">növ</option>
-                <option value="10">Təzə</option>
-                <option value="20">İşlənmiş</option>
-              </select>
+                  <div className="search__inputs">
+                    <select value={type} className="search__select" name="" id="" onChange={(e) => setType(e.target.value)}>
+                      <option value="">növ</option>
+                      {
+                        typeOptions.map((item,index) => (
+                          <option key={index}  value={item}>{item}</option>
+                        ))
+                      }
+                    </select>
 
-              <select className="search__select" name="" id="">
-                <option value="">Mövsüm</option>
-                <option value="10">Yaz</option>
-                <option value="20">Payız</option>
-              </select>
+                    <select value={season} className="search__select" name="" id="" onChange={(e) => setSeason(e.target.value)}>
+                      <option value="">Mövsüm</option>
+                      {
+                        seasonOptions.map((item,index) => (
+                          <option key={index}  value={item}>{item}</option>
+                        ))
+                      }
+                    </select>
 
-              <div className="search__buttons">
-                <button className="banner__button search__button-search">
-                  Axtar
-                </button>
-                <button type="reset"  className="search__button" >
-                <Reload />
-                </button>
-              </div>
-            </div>
+                    <div className="search__buttons">
+                      <Link to={"/axtarish/"+`${width+'-'+height+'-'+diameter+'-'+type+'-'+season}`} className="banner__button search__button-search">
+                        Axtar
+                      </Link>
+                      <button  type="reset"  className="search__button" >
+                      <Reload />
+                      </button>
+                    </div>
+                  </div>
           </form>
         )}
 
-        {!typeOfSearch && (
+        {/* {!typeOfSearch && (
           <form className="search__footer_first">
             <div className="search__inputs">
               <select
@@ -94,7 +147,7 @@ function Index() {
               >
                 <option value="">Model</option>
                 <option value="10">C 200</option>
-                <option value="20">E 200</option>
+                <option value="20">E 200</option> 
               </select>
             </div>
 
@@ -121,7 +174,7 @@ function Index() {
               </div>
             </div>
           </form>
-        )}
+        )} */}
       </div>
     </div>
   );

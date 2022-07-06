@@ -16,7 +16,8 @@ const params=useParams()
  useEffect(() => {
     window.scrollTo(0, 0)
  }, [params])
-         const dispatch=useDispatch()
+
+    const dispatch=useDispatch()
     
     const wishListAdd=(id)=>{
       dispatch(addWishListStorage(id))
@@ -31,18 +32,26 @@ const params=useParams()
 
     const [ Products, setProducts ] = useState(false);
     function getProducts() {
+
+        const width=params.search.split("-")[0]
+        const height=params.search.split("-")[1]
+        const diameter=params.search.split("-")[2]
+        const type=params.search.split("-")[3]
+        const season=params.search.split("-")[4]
+
         axios({
             method: "POST",
-            baseURL: "https://apis.digimall.az/api/Queries/CehizimTopSearch",
+            baseURL: "https://apis.digimall.az/api/Queries/OtoShopAdvanceSearch",
             headers: {
-                'api-key': '620C471E-05CC-4D90-9817-B7A3EED57E1B' 
+                'api-key': 'D74AE0D0-6F20-40AA-B4C9-FC138D66EF10' 
             },
             data: 
                 {
-                    "name" : params.search,
-                    "languageId":19,
-                    "skip": 0,
-                    "take": 100
+                    "width" : width,
+                    "height": height,
+                    "diameter": diameter,
+                    "type": type,
+                    "season": season
                 }
          }).then( function(response) {
              setProducts(response.data);

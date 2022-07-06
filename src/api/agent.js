@@ -118,7 +118,7 @@ const ProfilRelated = {
 
 const ProductRelated = {
   advanceSearch: (body) => {
- return  axios.post(`https://apis.digimall.az/api/Queries/CehizimAdvanceSearch`, body,
+ return  axios.post(`https://apis.digimall.az/api/Queries/OtoShopAdvanceSearch`, body,
    {headers: { 'api-key': "D74AE0D0-6F20-40AA-B4C9-FC138D66EF10"}})
  .then((responseBody=>{
       if(responseBody.status==200){
@@ -126,6 +126,16 @@ const ProductRelated = {
      } 
  }))
 },
+
+getAdvanceSearch: () => {
+  return  axios.get(`https://apis.digimall.az/api/OtoShop/GetOtoShopAttributes`,
+    {headers: { 'api-key': "D74AE0D0-6F20-40AA-B4C9-FC138D66EF10"}}) 
+  .then((responseBody=>{
+       if(responseBody.status==200){
+           return responseBody.data
+      } 
+  }))
+ },
 
 relatedProducts: (body) => {
   return  axios.post(`/Queries/CehizimRelatedProducts`, body,
@@ -149,7 +159,7 @@ relatedProducts: (body) => {
 
  getCategories: () => {
   return  axios.get(`https://apis.digimall.az/api/OtoShop/GetCategoriesWithCreditSettings`,
-    {headers: { 'api-key': "D74AE0D0-6F20-40AA-B4C9-FC138D66EF10"}})
+    {headers: { 'api-key': "D74AE0D0-6F20-40AA-B4C9-FC138D66EF10"}}) 
   .then((responseBody=>{
        if(responseBody.status==200){
            return responseBody.data

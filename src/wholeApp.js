@@ -100,7 +100,7 @@ useEffect(() => {
 
     return (
      <BrowserRouter>
-    <Routes>
+    <Routes> 
       <Route path="/" element={<App />} />
       <Route path="daxil-ol" element={<Login />} />
       <Route path="qeydiyyat" element={<Register />} />

@@ -61,7 +61,7 @@ export default class App extends Component {
         storyItems.push(
            <li
             key={storyItem.id}
-            data-id={storyItem.id}
+            data-id={storyItem.id} 
             data-time={storyItem.time}
             className={storyItem.seen ? 'seen' : ''}
           >
