@@ -177,7 +177,7 @@ export default function ProductDetailsComp() {
         var last__ = ((ProductDetails.price + (ProductDetails.price*percent/100))/Installement).toFixed(2)
         setInstallementPrice(last__)
     }
-    function getProductDetail() {
+    function getProductDetail() { 
         axios({
             method: "POST",
             baseURL: "https://apis.digimall.az/api/Queries/ProductFieldSearchForCehizim",
