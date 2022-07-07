@@ -9345,6 +9345,7 @@ color: green;
     grid-row-start: span 1;
     -ms-grid-row-span: 1;
     grid-row-end: span 1;
+    margin-left: 15px;
   }
   
   #w-node-_66e4230c-8992-69de-c9b1-aa9733b4767b-64a99980 {

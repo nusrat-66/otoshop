@@ -21,7 +21,7 @@ import { useDispatch } from 'react-redux';
 import {takeItemsFromStorage, takeWishlistFromStorage, getCategories} from "./redux/actions"
 import {login} from "./redux/actions"
 import jwt_decode from "jwt-decode";
-import axios from "axios"
+import axios from "axios";
 import SearchPage from "./Pages/searchPage"
 import Category from "./Pages/category"
 import Endirimler from "./Pages/endirimler"
@@ -31,11 +31,8 @@ import Privacy from "./components/privacy"
 import Policy from "./components/policy/index"
 import Contract from "./components/conract/index"
  
-
-
 function WholeApp() {
-  
-       const dispatch=useDispatch()
+        const dispatch=useDispatch()
     useEffect(() => {
       const stateFromLocal=localStorage.getItem("bucket")
       const wishlistFromLocal=localStorage.getItem("wishlist")
@@ -47,13 +44,9 @@ function WholeApp() {
      }
     }, [])
  
-
-
-
 useEffect(() => {
   dispatch(getCategories())
  }, [])
-  
 
      useEffect(() => {
       let loginDatas=null
@@ -91,11 +84,9 @@ useEffect(() => {
               dispatch(login({
            id:loginDatas.id, phoneNumber: loginDatas.phoneNumber, customerId:data.data.id, fullname:`${loginDatas.name} ${loginDatas.surName}`
                 }))
- 
-          })
+           })
       }
-   
-  },
+   },
   []);
 
     return (

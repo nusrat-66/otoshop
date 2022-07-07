@@ -21,6 +21,7 @@ import agent from "../../../api/agent";
  import SocialMediaLanding from "../../../components/SocialMedia/Landing/index";
  import Modal from "./modal"
  
+ 
 
  var decode = require('decode-html');
  
@@ -180,12 +181,12 @@ export default function ProductDetailsComp() {
     function getProductDetail() {
         axios({
             method: "POST",
-            baseURL: "https://apis.digimall.az/api/Queries/ProductFieldSearchForCehizim",
+            baseURL: "https://apis.digimall.az/api/Queries/ProductFieldSearchForOtoShop",
             headers: {
-                'api-key': '620C471E-05CC-4D90-9817-B7A3EED57E1B' 
+                'api-key': 'D74AE0D0-6F20-40AA-B4C9-FC138D66EF10' 
             },
             data: {
-                languageId: 19,
+                languageId: 25,
                 productsId: parseInt(params.mehsulId)
             }
         }).then(function(response) {
@@ -219,7 +220,7 @@ export default function ProductDetailsComp() {
                 method: "POST",
                 baseURL: "https://apis.digimall.az/api/Queries/CehizimGetProductByTag",
                 headers: {
-                    'api-key': '620C471E-05CC-4D90-9817-B7A3EED57E1B' 
+                    'api-key': 'D74AE0D0-6F20-40AA-B4C9-FC138D66EF10' 
                 },
                 data: {
                     languageId: 19,
@@ -322,7 +323,7 @@ const increase=()=>{
 
  
      return (
-        <>   {ProductFullSTate !== false && percent  ? <div className="prdct-page-title wf-section">
+        <>   {ProductFullSTate !== false ? <div className="prdct-page-title wf-section">
         <div className="dv-wrapper">
           <div className="w-layout-grid product-grid">
             <div id="w-node-_393f6ea9-ca5e-3433-b581-793138fa8ea6-64a99980" className="w-layout-grid product-gallery">
@@ -357,45 +358,49 @@ const increase=()=>{
                   <div>
                     <div className="material material_between">
                       <div className="dtls-name dtls-name_oto">Marka:</div>
-                      <div id="w-node-_60f3ba70-b199-4054-c931-a4a02c89ff98-64a99980" dangerouslySetInnerHTML={{__html: decode(material)}} className="dtls-value"></div>
+                      {
+                        console.log(dinamicField, 'dinamikField')
+                      }
+                      <div id="w-node-_60f3ba70-b199-4054-c931-a4a02c89ff98-64a99980"  className="dtls-value">{dinamicField.marka}</div>
                     </div>
                     <div className="material material_between">
                       <div className="dtls-name dtls-name_oto">Model:</div>
-                      <div id="w-node-_60f3ba70-b199-4054-c931-a4a02c89ff98-64a99980" className="dtls-value">{dinamicField.Size}</div>
+                      <div id="w-node-_60f3ba70-b199-4054-c931-a4a02c89ff98-64a99980" className="dtls-value">{ProductDetails.modelName}</div>
                     </div>
                     <div className="material material_between">
                       <div className="dtls-name dtls-name_oto">Ölçü:</div>
-                      <div id="w-node-_60f3ba70-b199-4054-c931-a4a02c89ff98-64a99980" className="dtls-value">{dinamicField.Size}</div>
+                      <div id="w-node-_60f3ba70-b199-4054-c931-a4a02c89ff98-64a99980" className="dtls-value">{dinamicField.size}</div>
                     </div>
                     <div className="material material_between">
                       <div className="dtls-name dtls-name_oto">Mövsüm:</div>
-                      <div id="w-node-_60f3ba70-b199-4054-c931-a4a02c89ff98-64a99980" className="dtls-value">{dinamicField.Size}</div>
+                      <div id="w-node-_60f3ba70-b199-4054-c931-a4a02c89ff98-64a99980" className="dtls-value">{dinamicField.season}</div>
                     </div>
                     <div className="material material_between">
                       <div className="dtls-name dtls-name_oto">Sürət indexi:</div>
-                      <div id="w-node-_60f3ba70-b199-4054-c931-a4a02c89ff98-64a99980" className="dtls-value">{dinamicField.Size}</div>
+                      <div id="w-node-_60f3ba70-b199-4054-c931-a4a02c89ff98-64a99980" className="dtls-value">{dinamicField.speedindex}</div>
                     </div>
                   </div>
                   <div>
                     <div className="material material_between">
                       <div className="dtls-name dtls-name_oto">Tipi:</div>
-                      <div id="w-node-_60f3ba70-b199-4054-c931-a4a02c89ff98-64a99980" dangerouslySetInnerHTML={{__html: decode(material)}} className="dtls-value"></div>
+ 
+                      <div id="w-node-_60f3ba70-b199-4054-c931-a4a02c89ff98-64a99980"  className="dtls-value">{dinamicField.type}</div>
                     </div>
                     <div className="material material_between">
                       <div className="dtls-name dtls-name_oto">Zəmanət:</div>
-                      <div id="w-node-_60f3ba70-b199-4054-c931-a4a02c89ff98-64a99980" className="dtls-value">{dinamicField.Size}</div>
+                      <div id="w-node-_60f3ba70-b199-4054-c931-a4a02c89ff98-64a99980" className="dtls-value">{dinamicField.guaranrtyYear} il</div>
                     </div>
                     <div className="material material_between">
                       <div className="dtls-name dtls-name_oto">Ölkə:</div>
-                      <div id="w-node-_60f3ba70-b199-4054-c931-a4a02c89ff98-64a99980" className="dtls-value">{dinamicField.Size}</div>
+                      <div id="w-node-_60f3ba70-b199-4054-c931-a4a02c89ff98-64a99980" className="dtls-value">{dinamicField.brandcountry}</div>
                     </div>
                     <div className="material material_between">
                       <div className="dtls-name dtls-name_oto">Yük indexi:</div>
-                      <div id="w-node-_60f3ba70-b199-4054-c931-a4a02c89ff98-64a99980" className="dtls-value">{dinamicField.Size}</div>
+                      <div id="w-node-_60f3ba70-b199-4054-c931-a4a02c89ff98-64a99980" className="dtls-value">{dinamicField.weightindex}</div>
                     </div>
                   </div>
                 </div>
-                <p className="detailedd__price"> {percent && ProductDetails.price+(ProductDetails.price*percent/100)} ₼ </p>
+                 <p className="detailedd__price"> {percent && ProductDetails.price+(ProductDetails.price*percent/100)} ₼ </p>
                 <div className="quantity-num quantity-num_sp">
                   <div id="w-node-a2352cfa-8505-efb8-4322-77c228775df2-64a99980" className="quantity-bar">
                     

@@ -47,11 +47,16 @@ const params=useParams()
             },
             data: 
                 {
-                    "width" : width,
-                    "height": height,
-                    "diameter": diameter,
+                    "width" : parseInt(width),
+                    "height": parseInt(height),
+                    "diameter": parseInt(diameter),
                     "type": type,
-                    "season": season
+                    "season": season,
+                    "skip":0,
+                    "take":1000,
+                    "languageId":15,
+                    // "direction": true,
+                    // "sort": "string"
                 }
          }).then( function(response) {
              setProducts(response.data);

@@ -53,16 +53,13 @@ function  UnvanForm({element, products, unvanForm, unvanIncrease, customerAdress
     const [adresSelected, setAdresSelected]=useState(false)
     const  selectRef=React.useRef()
     
-   
-  
-
+ 
      useEffect(async () => {
         const cities = await agent.BucketRelated.getCities()
         const regions = await agent.BucketRelated.getCities(cities[0].id)
          setCities(cities)
         setRegions(regions)
-
-         }, [])
+          }, [])
 
          const onCityChange= async (e)=> {
             const regions = await agent.BucketRelated.getCities(e.target.value)
@@ -93,8 +90,8 @@ function  UnvanForm({element, products, unvanForm, unvanIncrease, customerAdress
       const name=rawName[0]
       const value=e.target.value
       const dumUnvanForm=unvanForm
-      dumUnvanForm[formIndex][name]=value
-      setUnvanForm([...dumUnvanForm])
+      dumUnvanForm[name]=value
+      setUnvanForm({...dumUnvanForm})
 if(select){
   const dumProducts=products.map((product)=> {
             if(product.isUnvan==element){
@@ -136,6 +133,7 @@ setProducts(dumProducts)
  setAdresSelected(!unvanForm.addressId)
  }, [!unvanForm.addressId])
  
+
  
   const theme = useTheme();
   const [personName, setPersonName] = React.useState([]);
@@ -199,8 +197,7 @@ return (
      <label className="w-commerce-commercecheckoutlabel cs-label">Çatdırılma tarixi *</label>
           <input value={unvanForm['tarix']} onChange={(e)=>unvanFormChangeFunc(e)} type="datetime-local" name={"tarix"} required className="w-commerce-commercecheckoutshippingcity dist-lb" />
           </div>
-
-      </div>
+       </div>
       
 {adresSelected && <><div className="w-commerce-commercecheckoutrow block-row">
         <div className="w-commerce-commercecheckoutcolumn block-column">
