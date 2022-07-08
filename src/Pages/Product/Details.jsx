@@ -11,7 +11,7 @@ import { useParams } from "react-router-dom";
 
 export default function ProductDetails() {
     const params = useParams()
- 
+
 
 useEffect(() => {
     window.scrollTo(0, 0)

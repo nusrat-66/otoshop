@@ -5,13 +5,26 @@ import HeartIcon from '../../../assets/images/heart.svg';
 import redHeart from "../../../assets/images/redHeart.svg"
 import { useDispatch } from 'react-redux'
 import { deleteWishListStorage,addWishListStorage  } from '../../../redux/actions'
-import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux';
+import agent from '../../../api/agent';
 import kamp1 from "../../../assets/images/oto/kamp1.png";
 import kamp2 from "../../../assets/images/oto/kamp2.png";
 import wheel from "../../../assets/images/oto/wheel.png"
 function CampaignMain() {
     const [campaignShortContext, setCampaignShortContext] = useState(false);
     const [NewestData, setNewestData] = useState(false);
+
+    const [campaigns, setCampaigns] = useState([]);
+
+    useEffect(() => {
+      const getCampaignsData = async () => {
+        const campaignsData = await agent.CampaniyaRelated.getCampaigns();
+        setCampaigns(campaignsData);
+      };
+      getCampaignsData();
+    }, []);
+
+
     function resignprice(value, month) {
         let installemnt__ = (value/month);
         return `${installemnt__.toFixed(2)} ₼ / ay`;
@@ -44,15 +57,22 @@ function CampaignMain() {
                         </div>
                     </a>
                 </div>
-
+ 
                 <div className='kampaniyalar'>
-                 <img className='kampaniyalar__kampaniya' src={kamp1} alt='kampaniya' />
-                 <img className='kampaniyalar__kampaniya' src={kamp2} alt='kampaniya' />
-                 <img className='kampaniyalar__kampaniya' src={kamp1} alt='kampaniya' />
-                 <img className='kampaniyalar__kampaniya' src={kamp2} alt='kampaniya' />
+                 {
+                    campaigns.map((item) => (
+                        <Link 
+                            key={item.id}
+                            to={"/kampaniya/" + item.id}
+                        >
+                            <img className='kampaniyalar__kampaniya' src={"https://ferrumcapital.s3.eu-north-1.amazonaws.com" + item.imageUrl} alt='kampaniya' />
+                        </Link>
+                    ))
+                 }
+                        
                 </div>
 
-
+                
         
           
                 <div className="prd-hd">

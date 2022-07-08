@@ -34,6 +34,79 @@ export const dinamicFieldTaker=(dinamicField, attrId)=>{
         else if(element.attributeId==10){
             dinamicObj.material=element.value
         }
+        else if(element.attributeId==10053){
+            dinamicObj.brandcountry=element.value
+        }
+
+
+
+
+        else if(element.attributeId==10055){
+            dinamicObj.type=element.value
+        }
+
+
+
+
+
+        else if(element.attributeId==10056){
+            dinamicObj.season=element.value
+        }
+
+
+
+        else if(element.attributeId==10057){
+            dinamicObj.guaranrtyYear=element.value
+        }
+
+
+        else if(element.attributeId==10058){
+            dinamicObj.speedindex=element.value
+        }
+
+ 
+
+
+        else if(element.attributeId==10060){
+            dinamicObj.width=element.value
+        }
+ 
+
+        else if(element.attributeId==10061){
+            dinamicObj.height=element.value
+        }
+
+
+        else if(element.attributeId==10062){
+            dinamicObj.diametr=element.value
+        }
+        else if(element.attributeId==10059){
+            dinamicObj.weightindex=element.value
+        }
+
+
+        else if(element.attributeId==10064){
+            dinamicObj.marka=element.value
+        }
+
+        else if(element.attributeId==10063){
+            dinamicObj.size=element.value
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     });
     return dinamicObj
 }

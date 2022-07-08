@@ -32,7 +32,7 @@ return (
           return <div key={Math.random()} id="w-node-_9ac3cf99-a23a-9a9c-8ee8-f832a2a44f87-39a5ea85" className="crt-items crt-items_oto">
           <div className="product-img-block product-img-block_oto">
                 <img
-                  src={"https://cdn.otomall.az/"+bucket.image}
+                  src={"https://ferrumcapital.s3.eu-north-1.amazonaws.com"+bucket.image}
                   loading="lazy"
                   sizes="100vw"
                   alt=""

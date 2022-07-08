@@ -1,10 +1,8 @@
-import ExampleBannerIMG from '../../../assets/images/banner.png';
-
-
 
  
 
-export default function CampaignBannerComp({imageUrl}) {
+export default function CampaignBannerComp({imageUrl}) { 
+
     return(
         <div className="campaign-banner-section wf-section">
             <div className="dv-wrapper">

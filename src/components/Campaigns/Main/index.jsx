@@ -20,7 +20,7 @@ const creditPriceTake=(object)=>{
              return object.price+((object.price*element.percent/100).toFixed(1))
         }
     });
-}
+} 
 
 const params=useParams()
 

@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import Swal from 'sweetalert2'
 import { useNavigate } from "react-router-dom";
 import { deleteAll } from "../../redux/actions";
+import {popUpString} from "./popupString.jsx"
 var decode = require('decode-html');
 
 export default function CheckoutComp() {
@@ -44,8 +45,7 @@ const [musteriMelumatiForm, setMusteriMelumatiForm] = useState({
         productId:"",
         addressId:null
          })
-
-
+ 
          const [unvanFormErrors , setUnvanFormErrors] = useState([{
             seher:"",
             rayon:"",
@@ -67,6 +67,9 @@ const [musteriMelumatiForm, setMusteriMelumatiForm] = useState({
     const musteriMelumatChange=(e)=>{
     setMusteriMelumatiForm({... musteriMelumatiForm, [e.target.name]: e.target.value})
  }
+
+
+
    const unvanIncrease=()=> {
      const dumUnvan=unvan
      const {length}=dumUnvan
@@ -83,8 +86,7 @@ const [musteriMelumatiForm, setMusteriMelumatiForm] = useState({
       dumUnvan.push(dumUnvan[length-1]+1)
       setUnvan([... dumUnvan])
   }
- 
-  
+   
  useEffect(() => {
    let dumProducts=[]
    let installmentMonth=[]
@@ -100,8 +102,7 @@ const [musteriMelumatiForm, setMusteriMelumatiForm] = useState({
          return bucket.installment==null
     })
  }
- 
-       setProducts(dumProducts)
+        setProducts(dumProducts)
      let dumProductsMonth=installmentMonth.sort((a, b)=>b-a).map((product, index)=>{
          const arrLength = installmentMonth.length
          const value=arrLength>1?((arrLength-1-index)/(arrLength-1))*100:0;
@@ -115,15 +116,7 @@ const [musteriMelumatiForm, setMusteriMelumatiForm] = useState({
     }
    }, [buckets, paymantType])
    
-
-   
-useEffect(async () => {
-  if(customerId){
-    const adresses=await agent.BucketRelated.getCustomerAddress(customerId)
- setCustomerAdress(adresses)
-}
-}, [customerId])
-
+ 
     const WholePrice=products.reduce(
     (previousValue, currentValue) =>{
        return previousValue + currentValue.price*currentValue.count
@@ -141,7 +134,6 @@ function valueLabelFormat(value){
     if(monthForSlider.find((marks)=> marks.value === value)?.label)
     return  monthForSlider.find((marks)=> marks.value === value).label + " Ay";
 }
-
  
 const getSlideData = (event, newValue) => {
 if (monthForSlider.length>0) {
@@ -152,53 +144,13 @@ if (monthForSlider.length>0) {
     const submitFuncion= async (e)=>{
         Swal.fire({
             description: 'Təbriklər sifarişiniz uğurla əlavə edildi!',
-             confirmButtonText: 'Sifarişiniz uğurla tamamlandı. ',
-             html:`<div class="swallContent">
-             <div class="swallContent__main">
-             <svg class="swallContet__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M8 2V5" stroke="#087C12" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" strokeLinejoin="round"/>
-<path d="M16 2V5" stroke="#087C12" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" strokeLinejoin="round"/>
-<path d="M3.5 9.08997H20.5" stroke="#087C12" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" strokeLinejoin="round"/>
-<path d="M21 8.5V17C21 20 19.5 22 16 22H8C4.5 22 3 20 3 17V8.5C3 5.5 4.5 3.5 8 3.5H16C19.5 3.5 21 5.5 21 8.5Z" stroke="#087C12" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" strokeLinejoin="round"/>
-<path d="M15.6937 13.7H15.7027" stroke="#087C12" stroke-width="2" stroke-linecap="round" strokeLinejoin="round"/>
-<path d="M15.6937 16.7H15.7027" stroke="#087C12" stroke-width="2" stroke-linecap="round" strokeLinejoin="round"/>
-<path d="M11.9945 13.7H12.0035" stroke="#087C12" stroke-width="2" stroke-linecap="round" strokeLinejoin="round"/>
-<path d="M11.9945 16.7H12.0035" stroke="#087C12" stroke-width="2" stroke-linecap="round" strokeLinejoin="round"/>
-<path d="M8.29529 13.7H8.30427" stroke="#087C12" stroke-width="2" stroke-linecap="round" strokeLinejoin="round"/>
-<path d="M8.29529 16.7H8.30427" stroke="#087C12" stroke-width="2" stroke-linecap="round" strokeLinejoin="round"/>
-</svg>
-
-<p class="swallContent__text">15 Sentyabr - Bazar ertəsi  saat 15:00-da sizinlə Whatsapp vasitəsilə əlaqə saxlanılacaq və əgər kreditiniz təsdiqlənərsə, 15 Sentyabr - Bazar ertəsi  saat 15:00 tarixində məhsulunuz çatıdırılacaq.</p>
-
-             </div>
-
-             <div class="swallContent__main">
-
-                 
-             <svg class="swallContet__icon swallContet__icon_wi" width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-<circle cx="9" cy="9.7428" r="8.5" stroke="#087C12"/>
-<g clip-path="url(#clip0_275_2800)">
-<path d="M8.27271 13.3094C8.51523 13.5549 9.0554 13.4735 9.11356 13.0876C9.47541 10.6912 11.2861 8.66961 12.6563 6.76463C13.0362 6.23674 12.1626 5.73527 11.7876 6.25687C10.5355 7.99748 8.95734 9.82904 8.33994 11.9412C7.63439 11.2201 6.926 10.5059 6.13468 9.87231C5.63353 9.47088 4.91666 10.1781 5.42321 10.5837C6.45421 11.4096 7.3452 12.3726 8.27271 13.3094Z" fill="#087C12"/>
-</g>
-<defs>
-<clipPath id="clip0_275_2800">
-<rect width="7.5" height="7.5" fill="white" transform="translate(5.25 5.9928)"/>
-</clipPath>
-</defs>
-</svg>
-
-
-
-<p class="swallContent__text">Bizi seçdiyiniz üçün təşəkkür edirik!</p>
-
-             </div>
-          </div>`
+             confirmButtonText: 'Sifarişiniz uğurla tamamlandı.',
+             html:`${popUpString}`
             ,
               customClass: {
                  confirmButton: 'swall2CustomButton',
                  container: 'swall2CustomContainer',
-              
-              }
+               }
           }).then((result) => {
              if (result.isConfirmed) {
                 //  dispatch(deleteAll())
@@ -206,14 +158,9 @@ if (monthForSlider.length>0) {
              }  
           })
 
-        return 
-
-
-
-
-         e.preventDefault()
-if(shertler){
-    const adressIdArray=[]
+          e.preventDefault()
+          if(shertler){
+     const adressIdArray=[]
     const unvanAddObject={}
     unvanForm.forEach(async (unvan, index, array)=>{
          if(unvan.addressId==null){
@@ -227,9 +174,7 @@ if(shertler){
           })
           adressIdArray.push(addressResponse.AddressId)
               unvan.productId.forEach(productId=>unvanAddObject[productId]={unvanId:addressResponse.AddressId, deliveryTime:unvan.tarix})
-              
-
-          }else {
+            }else {
              adressIdArray.push(unvan.addressId)
                unvan.productId.forEach(productId=> unvanAddObject[productId]={unvanId:unvan.addressId, deliveryTime:unvan.tarix} )
            }
@@ -277,10 +222,7 @@ if(shertler){
              proformaDetails
          })
           if(sebetbadget.Message.includes("succesfully!")){
-
-
-
-               Swal.fire({
+                Swal.fire({
                 title: 'Təbriklər sifarişiniz uğurla əlavə edildi!',
                 icon: 'success',
                 confirmButtonText: 'Çıxış'
@@ -360,7 +302,7 @@ const changeCatdirilma=(st)=>{
                                         <div id="w-node-ce2d3b09-4799-19bc-034f-8c7c18bbf5cf-a834c1dd" className="details">
                                             <div className="material">
                                             <div className="dtls-name">Material:</div>
-                                            <div id="w-node-ce2d3b09-4799-19bc-034f-8c7c18bbf5d3-a834c1dd" className="dtls-value" dangerouslySetInnerHTML={{__html: decode(product.material)}}></div>
+                                            {/* <div id="w-node-ce2d3b09-4799-19bc-034f-8c7c18bbf5d3-a834c1dd" className="dtls-value" dangerouslySetInnerHTML={{__html: decode(product.material)}}></div> */}
                                             </div>
 
                                         
@@ -368,8 +310,7 @@ const changeCatdirilma=(st)=>{
   
  
                                              <div className="dtls">
-                                            <div className="dtls-name">Rəng:</div>
-                                            <div id="w-node-ce2d3b09-4799-19bc-034f-8c7c18bbf5d8-a834c1dd" className="dtls-value">  <div style={{backgroundColor:"#"+product.color.split("#")[1]}} className="kvadrat"></div></div>
+                                             {/* <div id="w-node-ce2d3b09-4799-19bc-034f-8c7c18bbf5d8-a834c1dd" className="dtls-value">  <div style={{backgroundColor:"#"+product.color.split("#")[1]}} className="kvadrat"></div></div> */}
                                             </div>
                                             <div id="w-node-ce2d3b09-4799-19bc-034f-8c7c18bbf5da-a834c1dd" className="color w-form">
                                             <form id="email-form-3" name="email-form-3" data-name="Email Form 3" method="get" className="color-fm">
@@ -483,14 +424,9 @@ const changeCatdirilma=(st)=>{
                             </div>
                         </fieldset>
                         </div>
+  }
 
-
-
-
- }
-
-
-<div className="checkout__btns">
+ <div className="checkout__btns">
 <button onClick={changeCatdirilma(true)} className={btnClass}>Çatdırılma</button>
 <button onClick={changeCatdirilma(false)}  className={btnClassMontaj}>Montaj üçün randevu</button>
 </div>
@@ -499,7 +435,7 @@ const changeCatdirilma=(st)=>{
  <UnvanForm   setUnvanForm={setUnvanForm} products={products} unvanForm={unvanForm} element={1} unvanIncrease={unvanIncrease} customerAdress={customerAdress} setProducts={setProducts} unvan={unvan} setUnvan={setUnvan} />
  }
 
-
+ 
 
 {!catdirilma && 
  <div key={1} className="shipping">
@@ -520,7 +456,7 @@ const changeCatdirilma=(st)=>{
    
   <div className="w-commerce-commercecheckoutcolumn block-column gap-b-16">
 <label className="w-commerce-commercecheckoutlabel cs-label">Çatdırılma tarixi *</label>
-     <input value={unvanForm['tarix']} onChange={(e)=>console.log()} type="datetime-local" name={"tarix;"+(0)} required className="w-commerce-commercecheckoutshippingcity dist-lb" />
+     <input value={unvanForm['tarix']} onChange={(e)=>console.log(e)} type="datetime-local" name={"tarix;"+(0)} required className="w-commerce-commercecheckoutshippingcity dist-lb" />
      </div>
 
  </div>

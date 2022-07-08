@@ -23,7 +23,7 @@ const params=useParams()
 const campaignResponse = await agent.CampaniyaRelated.getCampaign(params.id)
 setCampaigns(campaignResponse)
 if(campaignResponse[0]?.imageUrlHeadBanner)
-setImageUrl("https://cdn.otomall.az/"+campaignResponse[0]?.imageUrlHeadBanner)
+setImageUrl("https://ferrumcapital.s3.eu-north-1.amazonaws.com"+campaignResponse[0]?.imageUrlHeadBanner)
 }, [])
 
     return(

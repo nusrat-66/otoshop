@@ -2,6 +2,9 @@ import axios from "axios";
  
   axios.defaults.baseURL = "https://apis.digimall.az/api";
     
+
+
+   
  const BucketRelated = {
    getCities: (id) => {
     let endPoint=''
@@ -43,8 +46,7 @@ deleteCustomerAddress:(id) =>{
        return data.data
  })
 },
-
-
+ 
 getCreditSettingsById:(id) =>{
   return axios.get(`/Cehizim/GetCreditSettingMonthByCreditSettingId/${id}`, {headers: { 'api-key': "D74AE0D0-6F20-40AA-B4C9-FC138D66EF10",  'Authorization' : `Bearer ${localStorage.getItem('token')}`,}})
  .then((data)=>{
@@ -72,15 +74,13 @@ updateAdressStatus:(body) =>{
        return data.data
  })
 },
-
-
+ 
  }
 
-
-
+ 
 const WishListRelated = {
   getelementById: (id) => {
- return  axios.post(`Queries/ProductFieldSearchForCehizim`, {productsId:id, languageId:19},
+ return  axios.post(`https://apis.digimall.az/api/Queries/ProductFieldSearchForOtoShop`, {productsId:id, languageId:19},
    {headers: { 'api-key': "D74AE0D0-6F20-40AA-B4C9-FC138D66EF10"}})
  .then((responseBody=>{
       if(responseBody.status==200){
@@ -211,6 +211,16 @@ getNewest: (id) => {
       } 
   }))
  },
+
+ getCampaigns: () => {
+  return  axios.get(`https://apis.digimall.az/api/Products/GetCampaigns`,
+    {headers: { 'api-key': "D74AE0D0-6F20-40AA-B4C9-FC138D66EF10"}})
+  .then((responseBody=>{
+       if(responseBody.status==200){
+           return responseBody.data
+      } 
+  }))
+ }
  
 }
 

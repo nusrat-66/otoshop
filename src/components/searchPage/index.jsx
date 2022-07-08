@@ -54,7 +54,7 @@ const params=useParams()
                     "season": season,
                     "skip": 0,
                     "take": 1000,
-                    "languageId": 15
+                    "languageId": 15,
                 }
          }).then( function(response) {
              setProducts(response.data);

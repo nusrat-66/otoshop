@@ -7,7 +7,7 @@ function Index() {
 
   useEffect(() => {
     const getSlideData = async () => {
-      const slideData = await agent.ProductRelated.getSlider();
+      const slideData = await agent.ProductRelated.getSlider(); 
       setSlide(slideData);
     };
     getSlideData();
