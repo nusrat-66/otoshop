@@ -20,12 +20,14 @@ import axios from "axios";
   }))
 },
  postUserAdress: (data)=>{
-       return axios.post(`Customers/NewCustomerAddress`, data, {headers: { 'api-key': "D74AE0D0-6F20-40AA-B4C9-FC138D66EF10",  'Authorization' : `Bearer ${localStorage.getItem('token')}`}})
+       return axios.post(`Customers/NewCustomerAddressForOtoShop`, data, {headers: { 'api-key': "D74AE0D0-6F20-40AA-B4C9-FC138D66EF10"}})
      .then((data)=>{
         return data.data
  
      })
  },
+
+
 
  getCustomerAddress:(id) =>{
    return axios.get(`/Customers/GetCustomerAddressByCustomerId?customerId=${id}`, {headers: { 'api-key': "D74AE0D0-6F20-40AA-B4C9-FC138D66EF10",  'Authorization' : `Bearer ${localStorage.getItem('token')}`,}})
@@ -41,7 +43,7 @@ deleteCustomerAddress:(id) =>{
 },
 
  CreateNewProforma:(data) =>{
-  return axios.post(`/Customers/CreateNewProformaForCehizim`,data, {headers: { 'api-key': "D74AE0D0-6F20-40AA-B4C9-FC138D66EF10",  'Authorization' : `Bearer ${localStorage.getItem('token')}`,}})
+  return axios.post(`/Customers//api/Customers/CreateNewProformaForOtoShop`,data, {headers: { 'api-key': "D74AE0D0-6F20-40AA-B4C9-FC138D66EF10",  'Authorization' : `Bearer ${localStorage.getItem('token')}`,}})
  .then((data)=>{
        return data.data
  })
