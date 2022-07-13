@@ -157,29 +157,21 @@ if (monthForSlider.length>0) {
                 //  navigate(`/profil`)
              }  
           })
-
+console.log('bura girir');
           e.preventDefault()
           if(shertler){
+
      const adressIdArray=[]
     const unvanAddObject={}
-    unvanForm.forEach(async (unvan, index, array)=>{
-         if(unvan.addressId==null){
-           const addressResponse=await agent.BucketRelated.postUserAdress({
-            userId,
-            "recordStatus": 0,
-            "regionId": unvan.rayon?parseInt(unvan.rayon):parseInt(unvan.seher),
-            "address": unvan.unvan,
-            "description":unvan.elaveMelumat,
-             customerId
-          })
+            const addressResponse=await agent.BucketRelated.postUserAdress({
+             "recordStatus": 0,
+            "regionId": unvanForm.rayon?parseInt(unvanForm.rayon):parseInt(unvanForm.seher),
+            "address": unvanForm.unvan,
+            "description":unvanForm.elaveMelumat,
+           })
           adressIdArray.push(addressResponse.AddressId)
               unvan.productId.forEach(productId=>unvanAddObject[productId]={unvanId:addressResponse.AddressId, deliveryTime:unvan.tarix})
-            }else {
-             adressIdArray.push(unvan.addressId)
-               unvan.productId.forEach(productId=> unvanAddObject[productId]={unvanId:unvan.addressId, deliveryTime:unvan.tarix} )
-           }
-          if(adressIdArray.length==array.length) {
-                const proformaDetails=products.map((product)=>{
+                  const proformaDetails=products.map((product)=> {
                  return  {
                             'productId': product.productId,
                             'productName': product.title,
@@ -233,9 +225,7 @@ if (monthForSlider.length>0) {
                  }  
               })
          }
-          }
-      })
-    }
+      }
   }
    useEffect(() => {
      products.forEach((product)=>{
