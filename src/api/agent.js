@@ -198,7 +198,7 @@ relatedProducts: (body) => {
   getCampaign: (id) => {
  return  axios.get(`https://apis.digimall.az/api/Products/GetCampaignItemsByCampaignId?campaignId=${id}`,
    {headers: { 'api-key': "D74AE0D0-6F20-40AA-B4C9-FC138D66EF10"}})
- .then((responseBody=>{
+ .then((responseBody=>{ 
       if(responseBody.status==200){
           return responseBody.data
      } 

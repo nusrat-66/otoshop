@@ -401,7 +401,14 @@ input::-webkit-inner-spin-button {
   }
 }
 
+/*===================================NEW=====================================*/
 
 .display_none {
     display: none;
 }
+
+.product-img {
+  margin: 0 10px;
+}
+
+

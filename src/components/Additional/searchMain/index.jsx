@@ -99,7 +99,7 @@ function Index() {
 
                   <div className="search__inputs">
                     <select value={type} className="search__select" name="" id="" onChange={(e) => setType(e.target.value)}>
-                      <option value="">növ</option>
+                      <option value="">Növ</option>
                       {
                         typeOptions.map((item,index) => (
                           <option key={index}  value={item}>{item}</option>

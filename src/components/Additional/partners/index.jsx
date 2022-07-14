@@ -7,7 +7,7 @@ import michelin from "../../../assets/images/oto/michelin.png";
 import lassa from "../../../assets/images/oto/lassa.png";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick-theme.css"; 
 export default class SimpleSlider extends Component {
   render() {
     const settings = {
@@ -19,7 +19,8 @@ export default class SimpleSlider extends Component {
       autoplay: true,
       speed: 2000,
       autoplaySpeed: 2000,
-      cssEase: "linear"
+      cssEase: "linear",
+      
     };
     return (
       <div className="partners">

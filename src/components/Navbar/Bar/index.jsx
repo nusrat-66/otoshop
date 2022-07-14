@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 
 export default function NavigationBar() {
      
-    const {categorieReducer}=useSelector(state=>state)
+    const {categorieReducer}=useSelector(state=>state) 
     
     return(
         <div className="nav-navigation">
