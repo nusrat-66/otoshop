@@ -68,7 +68,7 @@ const [musteriMelumatiForm, setMusteriMelumatiForm] = useState({
     setMusteriMelumatiForm({... musteriMelumatiForm, [e.target.name]: e.target.value})
  }
 
-
+console.log(catdirilma, 'catdirilma');
 
    const unvanIncrease=()=> {
      const dumUnvan=unvan
@@ -141,6 +141,10 @@ if (monthForSlider.length>0) {
      setInstallement(slideValue)
   }
 }
+
+console.log(unvanForm, "unvanForm 55");
+
+
     const submitFuncion= async (e)=>{
         Swal.fire({
             description: 'Təbriklər sifarişiniz uğurla əlavə edildi!',
@@ -157,20 +161,13 @@ if (monthForSlider.length>0) {
                 //  navigate(`/profil`)
              }  
           })
-console.log('bura girir');
-          e.preventDefault()
+           e.preventDefault()
           if(shertler){
 
      const adressIdArray=[]
     const unvanAddObject={}
-            const addressResponse=await agent.BucketRelated.postUserAdress({
-             "recordStatus": 0,
-            "regionId": unvanForm.rayon?parseInt(unvanForm.rayon):parseInt(unvanForm.seher),
-            "address": unvanForm.unvan,
-            "description":unvanForm.elaveMelumat,
-           })
-          adressIdArray.push(addressResponse.AddressId)
-              unvan.productId.forEach(productId=>unvanAddObject[productId]={unvanId:addressResponse.AddressId, deliveryTime:unvan.tarix})
+ 
+             //   unvan.productId.forEach(productId=>unvanAddObject[productId]={unvanId:addressResponse.AddressId, deliveryTime:unvan.tarix})
                   const proformaDetails=products.map((product)=> {
                  return  {
                             'productId': product.productId,
@@ -184,15 +181,14 @@ console.log('bura girir');
                             'installmentMonthId': product.insallmentMonthId,
                             'month': Installement,
                             'percent': percent,
-                            'deliveryDate': unvanAddObject[product.id].deliveryTime,
-                            'deliveryTime': unvanAddObject[product.id].deliveryTime.split("T")[1],
-                            'customerAddressId':  unvanAddObject[product.id].unvanId ? parseInt(unvanAddObject[product.id].unvanId):parseInt(adressIdArray[0])
+                            'deliveryDate': unvanForm.tarix,
+                            'deliveryTime': unvanForm.tarix.split("T")[1],
+                            'customerAddressId':  unvanForm.tarix.unvanId ? parseInt(unvanAddObject[product.id].unvanId):parseInt(adressIdArray[0])
               }})
 
         const sebetbadget= await agent.BucketRelated.CreateNewProforma({
             'type': paymantType=="incash"? false:true,
-             customerId,
-            'name': musteriMelumatiForm.Ad,
+             'name': musteriMelumatiForm.Ad,
             'family': musteriMelumatiForm.Soyad,
             'code':musteriMelumatiForm.FIN,
             'idCardNumber': musteriMelumatiForm.Seriya,
@@ -208,8 +204,8 @@ console.log('bura girir');
             'discount': 0,
             'cargoId': 0,
             'currencyId': 0,
-             userId,
-            'callDate':musteriMelumatiForm.uygunGun,
+            "address": `regionId:${unvanForm.rayon?parseInt(unvanForm.rayon):parseInt(unvanForm.seher)};address:${unvanForm.unvan};description:${unvanForm.elaveMelumat};montaj:${!catdirilma}`,
+             'callDate':musteriMelumatiForm.uygunGun,
             'callTime': musteriMelumatiForm.uygunGun.split("T")[1],
              proformaDetails
          })
@@ -221,8 +217,7 @@ console.log('bura girir');
               }).then((result) => {
                  if (result.isConfirmed) {
                      dispatch(deleteAll())
-                     navigate(`/profil`)
-                 }  
+                  }  
               })
          }
       }
