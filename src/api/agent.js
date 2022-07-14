@@ -27,10 +27,10 @@ import axios from "axios";
      })
  },
 
-
-
+ 
+ 
  getCustomerAddress:(id) =>{
-   return axios.get(`/Customers/GetCustomerAddressByCustomerId?customerId=${id}`, {headers: { 'api-key': "D74AE0D0-6F20-40AA-B4C9-FC138D66EF10",  'Authorization' : `Bearer ${localStorage.getItem('token')}`,}})
+   return axios.get(`/Customers/GetCustomerAddressByCustomerId?customerId=${id}`, { headers: { 'api-key': "D74AE0D0-6F20-40AA-B4C9-FC138D66EF10",  'Authorization' : `Bearer ${localStorage.getItem('token')}`,}})
   .then((data)=>{
         return data.data
   })
@@ -43,7 +43,7 @@ deleteCustomerAddress:(id) =>{
 },
 
  CreateNewProforma:(data) =>{
-  return axios.post(`/Customers//api/Customers/CreateNewProformaForOtoShop`,data, {headers: { 'api-key': "D74AE0D0-6F20-40AA-B4C9-FC138D66EF10",  'Authorization' : `Bearer ${localStorage.getItem('token')}`,}})
+  return axios.post(`https://apis.digimall.az/api/Customers/CreateNewProformaForOtoShop`,data, {headers: { 'api-key': "D74AE0D0-6F20-40AA-B4C9-FC138D66EF10",  'Authorization' : `Bearer ${localStorage.getItem('token')}`,}})
  .then((data)=>{
        return data.data
  })
